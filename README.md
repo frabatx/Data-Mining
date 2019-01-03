@@ -28,15 +28,15 @@ record to be instead of a tuple just a vector of terms.
 A transaction is a set of records that form a tree (meaning that each record in the set has ONE only parent record. Here is an
 example of a transaction:
 
-A
-+------- B
-          +------- C
-          +------- D
-+------- F
-          +------- G
-                    +------- H
-                              +------- I
-                    +------- J
+>A
+>+------- B
+>          +------- C
+>          +------- D
+>+------- F
+>          +------- G
+>                    +------- H
+>                              +------- I
+>                    +------- J
 
 Which means that A started, first called B, (B called C and then D), then the A called F which in turn called G. G called first H
 (which called I) and then G called J.
