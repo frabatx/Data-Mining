@@ -1,6 +1,6 @@
 # Data Mining Project
-**Frequent itemset mining in tree-like sequences of complex objects**
-**Data Mining University of Trento 2018/19 January/February Exam Period**
+**Frequent itemset mining in tree-like sequences of complex objects**  
+**Data Mining University of Trento 2018/19 January/February Exam Period**  
 
 A great deal of applications are producing data records that are not independent to each other but sequences where the
 appearance of a record depends on the appearance of another. Furthermore, each such record is not an opaque item but
@@ -28,15 +28,15 @@ record to be instead of a tuple just a vector of terms.
 A transaction is a set of records that form a tree (meaning that each record in the set has ONE only parent record. Here is an
 example of a transaction:
 
->A
->+------- B
->          +------- C
->          +------- D
->+------- F
->          +------- G
->                    +------- H
->                              +------- I
->                    +------- J
+>A  
+>+------- B  
+>          +------- C  
+>          +------- D  
+>+------- F  
+>          +------- G  
+>                    +------- H  
+>                              +------- I  
+>                    +------- J  
 
 Which means that A started, first called B, (B called C and then D), then the A called F which in turn called G. G called first H
 (which called I) and then G called J.
