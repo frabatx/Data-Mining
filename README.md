@@ -30,13 +30,13 @@ example of a transaction:
 
 >A  
 >+------- B  
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------- C  
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------- D  
+>         +------- C  
+>         +------- D  
 >+------- F  
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------- G  
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------- H  
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------- I  
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------- J  
+>         +------- G  
+>                  +------- H  
+>                           +------- I  
+>                  +------- J  
 
 Which means that A started, first called B, (B called C and then D), then the A called F which in turn called G. G called first H
 (which called I) and then G called J.
