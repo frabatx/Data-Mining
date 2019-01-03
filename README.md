@@ -1,6 +1,6 @@
 # Data Mining Project
-** Frequent itemset mining in tree-like sequences of complex objects **
-** Data Mining University of Trento 2018/19 January/February Exam Period**
+**Frequent itemset mining in tree-like sequences of complex objects**
+**Data Mining University of Trento 2018/19 January/February Exam Period**
 
 A great deal of applications are producing data records that are not independent to each other but sequences where the
 appearance of a record depends on the appearance of another. Furthermore, each such record is not an opaque item but
