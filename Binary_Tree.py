@@ -84,7 +84,7 @@ class BinaryTree:
         else:
             B.left = self.left
             B.parent = self
-            self.parent = B
+            #self.parent = B
             self.left = B
 
     """
@@ -99,11 +99,41 @@ class BinaryTree:
     """
     def insert_right(self, data):
         B = BinaryTree(data)
-        if self._right == None:
-            self._right = B
+        if self.right == None:
+            self.right = B
         else:
-            B._right = self._right
-            self._right = B
+            B.right = self.right
+            self.right = B
+
+    def insert(self, node):
+        if random.random() <= 0.5:
+            if self.left == None:
+                self.left = node
+                print('insert [' + node.data + '] left of [' + self.data + ']' )
+            else:
+                oldLeft = self.left
+                node.insert(oldLeft)
+                self.left = node
+                print('pushing down [' + oldLeft.data + '] left of [' + node.data + ']', )
+        else:
+            if self.right == None:
+                self.right = node
+                print('insert [' + node.data + '] right of [' + self.data + ']' )
+            else:
+                oldRight = self.right
+                node.insert(oldRight)
+                self.right = node
+                print('pushing down [' + oldRight.data + '] right of [' + node.data + ']', )
+        node.parent = self
+        print('attaching parent [' + self.data + '] to [' + node.data + ']')
+
+    def records(self):
+        if self.left != None:
+            print(self.data, self.left.data)
+            self.left.records()
+        if self.right != None:
+            print(self.data, self.right.data)
+            self.right.records()
 
     """
     RETURN an integer which is the height of the tree
@@ -134,3 +164,23 @@ class BinaryTree:
     - clone()
 
     """
+
+
+actions = ['A', 'B', 'C', 'D', 'E', 'F']
+
+from random import shuffle
+import random
+
+shuffle(actions)
+print(actions, "\n")
+
+tree = BinaryTree(actions[0])
+del actions[0]
+
+for i in actions:
+    node = BinaryTree(i)
+    print("new node: ", node.data)
+    tree.insert(node)
+
+print(tree)
+tree.records()
