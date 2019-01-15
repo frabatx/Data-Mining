@@ -127,6 +127,32 @@ class BinaryTree:
         node.parent = self
         print('attaching parent [' + self.data + '] to [' + node.data + ']')
 
+    def insertTraversal(self, value):
+        if random.random() <= 0.5:
+            self.insertTraversalLeft(value)
+        else: 
+            self.insertTraversalRight(value)
+
+    def insertTraversalLeft(self, value):
+        if self.left != None:
+            print('node found. Going down...')
+            self.left.insertTraversal(value)
+        else:
+            print('free edge found. Inserting node.')
+            newNode = BinaryTree(value)
+            self.left = newNode
+            newNode.parent = self
+
+    def insertTraversalRight(self, value):
+        if self.right != None:
+            print('node found. Going down...')
+            self.right.insertTraversal(value)
+        else:
+            print('free edge found. Inserting node.')
+            newNode = BinaryTree(value)
+            self.right = newNode
+            newNode.parent = self
+   
     def records(self):
         if self.left != None:
             print(self.data, self.left.data)
@@ -178,9 +204,11 @@ tree = BinaryTree(actions[0])
 del actions[0]
 
 for i in actions:
-    node = BinaryTree(i)
-    print("new node: ", node.data)
-    tree.insert(node)
+    # node = BinaryTree(i)
+    # print("new node: ", node.data)
+    # tree.insert(node)
+    print("inserting new value: ", i)
+    tree.insertTraversal(i)
 
 print(tree)
 tree.records()
