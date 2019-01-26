@@ -1,7 +1,6 @@
 '''
     File name: Binary_Tree.py
     Author: Battista Francesco, Merzi Nicolò
-    Date created: 03/01/2019
     Python Version: 3.5
 '''
 
@@ -9,14 +8,14 @@ import random
 from random import shuffle
 
 class BinaryTree:
-    """INITIALIZER"""
+    #INITIALIZER
     def __init__(self, data):
         self.data = data
         self.parent = None
         self.left = None
         self.right = None
 
-    """GETTER"""
+    #GETTER
     def get_data(self):
         return self.data
 
@@ -29,14 +28,9 @@ class BinaryTree:
     def get_right(self):
         return self.right
 
-    """ Returns a string of the tree """
+    #pretty print the tree
     def __str__(self):
         def str_branches(node, branches):
-            """ Returns a string with the tree pretty printed.
-
-                branches: a list of characters representing the parent branches.
-                Characters can be either ` ` or '│'
-            """
             strings = [str(node.data)]
 
             i = 0
@@ -89,7 +83,8 @@ class BinaryTree:
             newNode = BinaryTree(value)
             self.right = newNode
             newNode.parent = self
-   
+
+    #output tree in record format
     def records(self):
         if self.left != None:
             print(self.data, self.left.data)
@@ -99,49 +94,78 @@ class BinaryTree:
             self.right.records()
 
 
+'''
+actions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
-#actions = ['A', 'B', 'C', 'D', 'E', 'F']
+shuffle(actions)
+print(actions, "\n")
 
-#shuffle(actions)
-#print(actions, "\n")
+tree = BinaryTree(actions[0])
+del actions[0]
 
-#tree = BinaryTree(actions[0])
-#del actions[0]
+for i in actions:
+    print("inserting new value: ", i)
+    tree.insertTraversal(i)
 
-#for i in actions:
-#    print("inserting new value: ", i)
-#    tree.insertTraversal(i)
-
-#print(tree)
-#tree.records()
+print(tree)
+tree.records()
+'''
 
 
-#-------------OUTPUT-------------
-#['F', 'A', 'E', 'C', 'B', 'D']
+'''
+-------------OUTPUT-------------
 
-#inserting new value:  A
-#free edge found. Inserting node.
-#inserting new value:  E
-#node found. Going down...
-#free edge found. Inserting node.
-#inserting new value:  C
-#node found. Going down...
-#free edge found. Inserting node.
-#inserting new value:  B
-#free edge found. Inserting node.
-#inserting new value:  D
-#node found. Going down...
-#node found. Going down...
-#free edge found. Inserting node.
-#F
-#├B
-#└A
-# ├E
-# │├
-# │└D
-# └C
-#F B
-#F A
-#A E
-#E D
-#A C
+['G', 'I', 'C', 'F', 'D', 'A', 'B', 'E', 'H']
+
+inserting new value:  I
+free edge found. Inserting node.
+inserting new value:  C
+node found. Going down...
+free edge found. Inserting node.
+inserting new value:  F
+free edge found. Inserting node.
+inserting new value:  D
+node found. Going down...
+free edge found. Inserting node.
+inserting new value:  A
+node found. Going down...
+free edge found. Inserting node.
+inserting new value:  B
+node found. Going down...
+node found. Going down...
+free edge found. Inserting node.
+inserting new value:  E
+node found. Going down...
+node found. Going down...
+free edge found. Inserting node.
+inserting new value:  H
+node found. Going down...
+node found. Going down...
+node found. Going down...
+free edge found. Inserting node.
+
+tree pretty printed:
+G
+├F
+│├A
+││├
+││└E
+││ ├H
+││ └
+│└D
+└I
+ ├C
+ │├B
+ │└
+ └
+
+tree in record form:
+G F
+F A
+A E
+E H
+F D
+G I
+I C
+C B
+'''
