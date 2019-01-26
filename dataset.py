@@ -29,7 +29,7 @@ def records2(tree, t_id, r_id, aList):
 
 #create tree from list of actions
 r_id = 0
-datasetList = [[]]
+datasetList = []
 for i in range(1,1001):
     actions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
     shuffle(actions)
@@ -38,39 +38,39 @@ for i in range(1,1001):
     for j in actions:
         tree.insertTraversal(j)
     r_id = records2(tree, i, r_id, datasetList)
-
+    r_id = r_id - 1
 
 #write list to csv file
-#with open('dataset1k.csv', 'w') as csvfile:
-#    csvwriter = csv.writer(csvfile)
-#    for row in datasetList:
-#        csvwriter.writerow(row)
+with open('dataset1k.csv', 'w') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    for row in datasetList:
+        csvwriter.writerow(row)
 
 '''
 -------------OUTPUT-------------
 (r_id;t_id;action)
-1;1;FI
-2;1;IA
-3;1;AH
-4;1;IB
-5;1;BE
-6;1;FG
-7;1;GD
-8;1;GC
-10;2;IH
-11;2;HD
-12;2;DA
-13;2;AE
-14;2;DC
-15;2;CB
-16;2;HG
-17;2;GF
-19;3;IG
-20;3;GD
-21;3;DH
-22;3;HA
-23;3;IF
-24;3;FB
-25;3;FE
-26;3;EC
+1;1;AB
+2;1;BI
+3;1;IF
+4;1;ID
+5;1;DH
+6;1;BE
+7;1;EC
+8;1;CG
+9;2;GI
+10;2;IC
+11;2;IF
+12;2;GH
+13;2;HE
+14;2;HD
+15;2;DB
+16;2;DA
+17;3;DF
+18;3;FA
+19;3;FE
+20;3;EH
+21;3;HG
+22;3;DB
+23;3;BI
+24;3;BC
 '''
