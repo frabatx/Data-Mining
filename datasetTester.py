@@ -1,4 +1,5 @@
 import random
+import copy
 from random import shuffle, randint
 from Binary_Tree import BinaryTree
 
@@ -38,10 +39,11 @@ def createSequence():
     return aSeq
 
 def seqFiller(seq):
-    for i in seq:
+    seqfilled = copy.deepcopy(seq) #deep copy original list and modify only the copy
+    for i in seqfilled:
         while len(i) < 3:
             i.append(randint(1,10))
-        
+    return seqfilled #return copy list - original list "seq" untouched
 
 def seqTreeBuilder(aSeq):
     tree = BinaryTree(aSeq[0])
@@ -87,7 +89,7 @@ for i in range(1,4):
 #for f in datasetList:
 #    print(f)
 '''
-
+'''
 #Create sequence
 seq1 = createSequence()
 print("Sequence created: ", seq1)
@@ -101,3 +103,21 @@ tree = seqTreeBuilder(seq1)
 addNodesTree(tree)
 
 print(tree)
+'''
+
+
+#creates 5 trees with same seq inside
+seq = createSequence()
+print("Sequence created: ", seq)
+for i in range(1,5):
+    print("TREE: ", i)
+    print("seq: ", seq)
+    seqfilled = seqFiller(seq) #add noise to the sequence (original sequence doesnt change)
+    print("Sequence filled: ", seqfilled)
+    print("")
+    tree = seqTreeBuilder(seqfilled)
+    addNodesTree(tree)
+    print(tree)
+
+
+
