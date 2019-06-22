@@ -1,5 +1,6 @@
 import random
 import copy
+import csv
 from random import shuffle, randint
 from Binary_Tree import BinaryTree
 
@@ -7,7 +8,7 @@ def createList():
     firstNum = randint(1,10)
     secNum = randint(1,10)
     thirdNum = randint(1,10)
-    return [firstNum,secNum, thirdNum]
+    return [firstNum,secNum,thirdNum]
 
 def records2(tree, t_id, r_id, aList):
     r_id = r_id + 1
@@ -119,5 +120,35 @@ for i in range(1,5):
     addNodesTree(tree)
     print(tree)
 
+print("\n \n")
 
+#
+r_id = 0
+treeList = []
+
+seq1 = createSequence()
+print("\n Seq1: ", seq1, "\n")
+for i in range(1, 50):
+    seqfilled = seqFiller(seq1)
+    tree = seqTreeBuilder(seqfilled)
+    addNodesTree(tree)
+    r_id = records2(tree, i, r_id, treeList)
+    r_id = r_id - 1
+
+
+seq2 = createSequence()
+print("\n Seq2: ", seq2, "\n")
+for i in range(50, 100):
+    seqfilled = seqFiller(seq2)
+    tree = seqTreeBuilder(seqfilled)
+    addNodesTree(tree)
+    r_id = records2(tree, i, r_id, treeList)
+    r_id = r_id - 1
+
+
+#write list to csv file
+with open('datasetTest.csv', 'w') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    for row in treeList:
+        csvwriter.writerow(row)
 
