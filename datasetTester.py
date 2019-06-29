@@ -70,65 +70,22 @@ def addNodesTree(tree): #insert 4 random nodes
 
 
 
-
-
-'''
-r_id = 0
-datasetList = []
-
-#sequence X --> Y --> Z
-for i in range(1,4): 
-    tree = BinaryTree(['X',randint(1,10)])
-    tree.left = BinaryTree(['Y',randint(1,10)])
-    tree.left.left = BinaryTree([randint(1,10),'Z'])
-    #insert random nodes in the sequence
-    for j in range(1,4):
-        tree.insertTraversal(createList())
-    r_id = records2(tree, i, r_id, datasetList)
-    r_id = r_id - 1
-
-#for f in datasetList:
-#    print(f)
-'''
-'''
-#Create sequence
-seq1 = createSequence()
-print("Sequence created: ", seq1)
-
-#Fill sequence with noise untile each list has 3 element
-seqFiller(seq1)
-print("Sequence filled: ", seq1)
-
-
-tree = seqTreeBuilder(seq1)
-addNodesTree(tree)
-
+seq = createSequence() #create starting sequence
+print("\n Sequence created: ", seq)
+seqfilled = seqFiller(seq) #add noise to the sequence (original sequence doesnt change)
+print("\n Sequence filled: ", seqfilled, "\n")
+tree = seqTreeBuilder(seqfilled) #populate tree with the sequence
+addNodesTree(tree) #add random nodes to the tree
 print(tree)
-'''
 
+print("\n")
 
-#creates 5 trees with same seq inside
-seq = createSequence()
-print("Sequence created: ", seq)
-for i in range(1,5):
-    print("TREE: ", i)
-    print("seq: ", seq)
-    seqfilled = seqFiller(seq) #add noise to the sequence (original sequence doesnt change)
-    print("Sequence filled: ", seqfilled)
-    print("")
-    tree = seqTreeBuilder(seqfilled)
-    addNodesTree(tree)
-    print(tree)
-
-print("\n \n")
-
-#
 r_id = 0
 treeList = []
 
 seq1 = createSequence()
 print("\n Seq1: ", seq1, "\n")
-for i in range(1, 50):
+for i in range(1, 5):
     seqfilled = seqFiller(seq1)
     tree = seqTreeBuilder(seqfilled)
     addNodesTree(tree)
@@ -138,12 +95,22 @@ for i in range(1, 50):
 
 seq2 = createSequence()
 print("\n Seq2: ", seq2, "\n")
-for i in range(50, 100):
+for i in range(5, 10):
     seqfilled = seqFiller(seq2)
     tree = seqTreeBuilder(seqfilled)
     addNodesTree(tree)
     r_id = records2(tree, i, r_id, treeList)
     r_id = r_id - 1
+
+seq3 = createSequence()
+print("\n Seq3: ", seq3, "\n")
+for i in range(10, 15):
+    seqfilled = seqFiller(seq3)
+    tree = seqTreeBuilder(seqfilled)
+    addNodesTree(tree)
+    r_id = records2(tree, i, r_id, treeList)
+    r_id = r_id - 1
+
 
 
 #write list to csv file

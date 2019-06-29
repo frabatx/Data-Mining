@@ -1,9 +1,3 @@
-'''
-    File name: Binary_Tree.py
-    Author: Battista Francesco, Merzi Nicolò
-    Python Version: 3.5
-'''
-
 import random
 from random import shuffle
 
