@@ -22,7 +22,50 @@ class BinaryTree:
     def get_right(self):
         return self.right
 
-    #pretty print the tree
+    #METHODS
+
+    #Taking a value, less than 0.5 insert the value on left, otherwise on right
+    def insertTraversal(self, value):
+        if random.random() <= 0.5:
+            self.__insertTraversalLeft(value)
+        else: 
+            self.__insertTraversalRight(value)
+
+    #Private method
+    #Taking a value and insert it on the left branch
+    def __insertTraversalLeft(self, value):
+        if self.left != None:
+            #print('node found. Going down...')
+            self.left.insertTraversal(value)
+        else:
+            #print('free edge found. Inserting node.')
+            newNode = BinaryTree(value)
+            self.left = newNode
+            newNode.parent = self
+
+    #Private method
+    #Taking a value and insert it on the right branch
+    def __insertTraversalRight(self, value):
+        if self.right != None:
+            #print('node found. Going down...')
+            self.right.insertTraversal(value)
+        else:
+            #print('free edge found. Inserting node.')
+            newNode = BinaryTree(value)
+            self.right = newNode
+            newNode.parent = self
+
+    #Records
+    #output tree in record format
+    def records(self):
+        if self.left != None:
+            print(self.data, self.left.data)
+            self.left.records()
+        if self.right != None:
+            print(self.data, self.right.data)
+            self.right.records()
+
+    #Overriding string method
     def __str__(self):
         def str_branches(node, branches):
             strings = [str(node.data)]
@@ -51,41 +94,6 @@ class BinaryTree:
             return "".join(strings)
 
         return str_branches(self, [])
-
-    def insertTraversal(self, value):
-        if random.random() <= 0.5:
-            self.insertTraversalLeft(value)
-        else: 
-            self.insertTraversalRight(value)
-
-    def insertTraversalLeft(self, value):
-        if self.left != None:
-            #print('node found. Going down...')
-            self.left.insertTraversal(value)
-        else:
-            #print('free edge found. Inserting node.')
-            newNode = BinaryTree(value)
-            self.left = newNode
-            newNode.parent = self
-
-    def insertTraversalRight(self, value):
-        if self.right != None:
-            #print('node found. Going down...')
-            self.right.insertTraversal(value)
-        else:
-            #print('free edge found. Inserting node.')
-            newNode = BinaryTree(value)
-            self.right = newNode
-            newNode.parent = self
-
-    #output tree in record format
-    def records(self):
-        if self.left != None:
-            print(self.data, self.left.data)
-            self.left.records()
-        if self.right != None:
-            print(self.data, self.right.data)
-            self.right.records()
 
 
 '''
