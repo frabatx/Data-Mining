@@ -30,12 +30,12 @@ def records2(tree, t_id, r_id, aList):
 #create tree from list of actions
 r_id = 0
 datasetList = []
-for i in range(1,1001):
-    actions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-    shuffle(actions)
-    tree = BinaryTree(actions[0])
-    del actions[0]
-    for j in actions:
+for i in range(1,1001): #creo il numero di alberi
+    actions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'] #numero di nodi
+    shuffle(actions) #mischio
+    tree = BinaryTree(actions[0]) #creo il primo nodo
+    del actions[0] #lo cancello
+    for j in actions: #definisco i nodi dalle azioni
         tree.insertTraversal(j)
     r_id = records2(tree, i, r_id, datasetList)
     r_id = r_id - 1
@@ -45,6 +45,7 @@ with open('dataset1k.csv', 'w') as csvfile:
     csvwriter = csv.writer(csvfile)
     for row in datasetList:
         csvwriter.writerow(row)
+
 
 '''
 -------------OUTPUT-------------

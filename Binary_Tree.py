@@ -1,7 +1,22 @@
+# - * - coding: utf-8 - * - 
+"""Binary Tree
+This module creates simple binary trees.
+"""
 import random
 from random import shuffle
 
 class BinaryTree:
+    """Class Bynary tree
+        Methods:
+            * get_data()
+            * get_parent()
+            * get_left()
+            * get_right()
+            * insertTraversal(self, value)
+            * __insertTraversalLeft(self, value)
+            * __insertTraversalRight(self, value)
+            * records(self)
+    """
     #INITIALIZER
     def __init__(self, data):
         self.data = data
@@ -23,67 +38,25 @@ class BinaryTree:
         return self.right
 
     #METHODS
-
-    #Taking a value, less than 0.5 insert the value on left, otherwise on right
-    def insertTraversal(self, value):
-        if random.random() <= 0.5:
-            self.__insertTraversalLeft(value)
-        else: 
-            self.__insertTraversalRight(value)
-
-    #Private method
-    #Taking a value and insert it on the left branch
-    def __insertTraversalLeft(self, value):
-        if self.left != None:
-            #print('node found. Going down...')
-            self.left.insertTraversal(value)
-        else:
-            #print('free edge found. Inserting node.')
-            newNode = BinaryTree(value)
-            self.left = newNode
-            newNode.parent = self
-
-    #Private method
-    #Taking a value and insert it on the right branch
-    def __insertTraversalRight(self, value):
-        if self.right != None:
-            #print('node found. Going down...')
-            self.right.insertTraversal(value)
-        else:
-            #print('free edge found. Inserting node.')
-            newNode = BinaryTree(value)
-            self.right = newNode
-            newNode.parent = self
-
-    #Records
-    #output tree in record format
-    def records(self):
-        if self.left != None:
-            print(self.data, self.left.data)
-            self.left.records()
-        if self.right != None:
-            print(self.data, self.right.data)
-            self.right.records()
-
-    #Overriding string method
     def __str__(self):
+        """Overriding string method
+        """
         def str_branches(node, branches):
             strings = [str(node.data)]
-
             i = 0
             if node.left != None or node.right != None:
                 for current in [node.left, node.right]:
                     if i == 0:
-                        joint = '├'
+                        joint = '|___'
                     else:
-                        joint = '└'
+                        joint = '\___'
 
                     strings.append('\n')
                     for b in branches:
                         strings.append(b)
                     strings.append(joint)
                     if i == 0:
-                        branches.append('│')
+                        branches.append('|')
                     else:
                         branches.append(' ')
 
@@ -95,19 +68,61 @@ class BinaryTree:
 
         return str_branches(self, [])
 
+    def insertTraversal(self, value):
+        """Taking a value, less than 0.5 insert the value on left, otherwise on right
+        
+        Arguments:
+            value {[int]} -- [Value inside the node]
+        """
+        if random.random() <= 0.5:
+            self.__insertTraversalLeft(value)
+        else: 
+            self.__insertTraversalRight(value)
+
+    def __insertTraversalLeft(self, value):
+        """Taking a value and insert it on the left branch 
+        
+        Arguments:
+            value {[int]} -- [Value inside the node]
+        """
+        if self.left != None:
+            #print('node found. Going down...')
+            self.left.insertTraversal(value)
+        else:
+            #print('free edge found. Inserting node.')
+            newNode = BinaryTree(value)
+            self.left = newNode
+            newNode.parent = self
+
+    def __insertTraversalRight(self, value):
+        """Taking a value and insert it on the right branch 
+        
+        Arguments:
+            value {[int]} -- [Value inside the node]
+        """
+        if self.right != None:
+            #print('node found. Going down...')
+            self.right.insertTraversal(value)
+        else:
+            #print('free edge found. Inserting node.')
+            newNode = BinaryTree(value)
+            self.right = newNode
+            newNode.parent = self
+
+    
 
 '''
 actions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
-shuffle(actions)
+shuffle(actions) #si mischiano i nodi
 print(actions, "\n")
 
-tree = BinaryTree(actions[0])
-del actions[0]
+tree = BinaryTree(actions[0]) #si setta il nodo principale
+del actions[0] #si cancella dalla lista
 
-for i in actions:
+for i in actions: #per ogni nodo
     print("inserting new value: ", i)
-    tree.insertTraversal(i)
+    tree.insertTraversal(i) #inseriamolo nell'albero
 
 print(tree)
 tree.records()
