@@ -53,7 +53,7 @@ def seqFiller(seq, n_max):
     seqfilled = copy.deepcopy(seq) #deep copy original list and modify only the copy
     for i in seqfilled:
         while len(i) < n_max:
-            i.append(randint(1,10))
+            i.append(randint(0,9))
     return seqfilled #return copy list - original list "seq" untouched
 
 
@@ -91,14 +91,14 @@ def createList(max_seq_value, max_range):
         max_range {[int]} -- [Max value of a random integer]
     
     Returns:
-        [type] -- [description]
+        [list] -- [list of integer]
     """
     list = []
     for i in range(0,max_seq_value):
         list.append(randint(1,max_range))
     return list
 
-#insert n random nodes
+
 def addNodesTree(tree, tree_noise, max_seq_value, max_range):
     """the function inserts n random nodes in a tree, this nodes are used as noise inside the tree
     
@@ -112,7 +112,7 @@ def addNodesTree(tree, tree_noise, max_seq_value, max_range):
         aList = createList(max_seq_value, max_range)
         tree.insertTraversal(aList)
 
-#Stampa il dataset in relazione agli alberi
+
 def records2(tree, t_id, r_id, aList):
     """Given a tree the function builds a dataset as follows: 
         * Record id
@@ -143,9 +143,17 @@ def records2(tree, t_id, r_id, aList):
         r_id = records2(tree.right, t_id, r_id, aList)
     return r_id
 
-#generatore di alberi
-#prende in input il numero di alberi che vogliamo creare, il numero di nodi (corrispondenti al numero di liste per sequenza)
-#il numero di sequenze da creare, il massimo range di numeri all'interno delle sequenze, numero di alberi random all'interno
+def print_dataset(dataset_list):
+    """Writing entire dataset in a csv
+    
+    Arguments:
+        dataset_list {[list]} -- [List of r_id, t_id, pair of nodes in a parent-child relationship]
+    """
+    with open('dataset1k.csv', 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        for row in dataset_list:
+            csvwriter.writerow(row)
+
 def dataset_generator (n_tree, max_seq_value, n_sequences, max_range, tree_noise):
     """Dataset generator. Once the parameters have been set, a dataset can be built.
         * A seed is generated
@@ -179,6 +187,7 @@ def dataset_generator (n_tree, max_seq_value, n_sequences, max_range, tree_noise
             r_id = r_id - 1
             print("\n Tree n: ", n_trees)
             print(tree)
+    print_dataset(treeList)
  
 
 #generator_sequences(4,4,9)
@@ -190,5 +199,3 @@ tree_noise = 6
 node_noise = 5
 
 dataset_generator(n_tree,max_seq_value,n_sequences,max_range,tree_noise)
-
-

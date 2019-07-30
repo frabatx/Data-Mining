@@ -13,8 +13,8 @@ class BinaryTree:
             * get_left()
             * get_right()
             * insertTraversal(self, value)
-            * __insertTraversalLeft(self, value)
-            * __insertTraversalRight(self, value)
+            * __insertTraversalLeft(self, value) ** Private method
+            * __insertTraversalRight(self, value) ** Private method
             * records(self)
     """
     #INITIALIZER
