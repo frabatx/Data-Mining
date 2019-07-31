@@ -175,18 +175,23 @@ def dataset_generator (n_tree, max_seq_value, n_sequences, max_range, tree_noise
     #Creating sequences
     for sequences in range(1, n_sequences):
         seq = createSequence(max_seq_value, max_range) #creating sequence
-        print("\n Sequence created: ", seq)
-        seqfilled = seqFiller(seq, max_seq_value) #filled sequence
-        print(" Sequence filled: ", seqfilled)
+        print("\n","Sequence created: ", seq)
         #creating trees
         for n_trees in range(1, n_tree):
             t_id = t_id + 1
+            seqfilled = seqFiller(seq, max_seq_value) #filled sequence
+            
+            print("\n","Sequence filled: ", seqfilled)
+            
             tree = seqTreeBuilder(seqfilled) #from filled sequence to tree
             addNodesTree(tree,tree_noise, max_seq_value, max_range) #adding noise
+            
+            print("\n","Tree n: ", n_trees)
+            print(tree, "\n")
+            
             r_id = records2(tree, t_id, r_id, treeList)
             r_id = r_id - 1
-            print("\n Tree n: ", n_trees)
-            print(tree)
+            
     print_dataset(treeList)
  
 
