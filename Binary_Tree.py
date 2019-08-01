@@ -47,9 +47,9 @@ class BinaryTree:
             if node.left != None or node.right != None:
                 for current in [node.left, node.right]:
                     if i == 0:
-                        joint = '|___'
+                        joint = '├'
                     else:
-                        joint = '\___'
+                        joint = '└'
 
                     strings.append('\n')
                     for b in branches:
@@ -109,7 +109,28 @@ class BinaryTree:
             self.right = newNode
             newNode.parent = self
 
+    def insertBottom(self, value):
+        """Taking a value and insert it after the last leaf
+        
+        Arguments:
+            value {[int]} -- [Value inside the node]
+        """
+        if(self.left != None):
+            self.left.insertBottom(value)
+        if(self.right != None):
+            self.right.insertBottom(value)
+        if(self.right == None and self.left == None):
+            newNode = BinaryTree(value)
+            if random.random() > 0.5:
+                self.right = newNode
+                newNode.parent = self
+            else:
+                self.left = newNode
+                newNode.parent = self
+
+        
     
+
 
 '''
 actions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']

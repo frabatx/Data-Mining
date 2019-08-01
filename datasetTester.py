@@ -16,37 +16,36 @@ from random import shuffle, randint
 from Binary_Tree import BinaryTree
 
 
-def createSequence(n_list, max_range):
+def createSequence(n_list):
     """Create a seed
 
     Arguments:
         n_list {integer} -- [Number of lists inside the seed]
-        max_range {integer} -- [Max value inside the seed]
 
     Returns:
         [list] -- [It rapresents the seed of a single tree]
         Example: 
-            * [[4],[7],[1]]
+            * [[4],[7],[1],[5]]
             * [[1,8],[5],[3,9]]
             * [[4],[5,6],[8]]
     """
     aSeq = []
-    for i in range(1, n_list):
+    for i in range(0, n_list):
         if random.random() < 0.5:
-            aSeq.append([randint(0,max_range)])
+            aSeq.append([randint(0,9)])
         else:
-            aSeq.append([randint(0,max_range), randint(0,max_range)])
+            aSeq.append([randint(0,9), randint(0,9)])
     return aSeq
 
 
 def seqFiller(seq, n_max):
     """Filling
-    The function fills a list with random numbers up to a maximum number of values.
+    The function fills a list with random numbers up to 3 elements.
     
     Arguments:
         seq {[list]} -- [list of lists]
-        n_max {[integer]} -- [maximum number of values inside internal lists]
-    
+        n_max {[integer]} -- [number of elements inside list]
+
     Returns:
         [list] -- [A copy of the original list, filled by random numbers]
     """
@@ -58,7 +57,7 @@ def seqFiller(seq, n_max):
 
 
 def seqTreeBuilder(aSeq):
-    """Given a sequence, the function bild a tree
+    """Given a sequence, the function build a tree
     
     Arguments:
         aSeq {list} -- [generic list]
@@ -67,21 +66,9 @@ def seqTreeBuilder(aSeq):
         [tree] -- [Binary tree]
     """
     tree = BinaryTree(aSeq[0]) #root node
-    randNum = randint(1,4)
-    if randNum == 1:
-        tree.left = BinaryTree(aSeq[1]) 
-        tree.left.left = BinaryTree(aSeq[2]) 
-    if randNum == 2: 
-        tree.left = BinaryTree(aSeq[1]) 
-        tree.left.right = BinaryTree(aSeq[2]) 
-    if randNum == 3:
-        tree.right = BinaryTree(aSeq[1]) 
-        tree.right.right = BinaryTree(aSeq[2])
-    if randNum == 4:
-        tree.right = BinaryTree(aSeq[1])
-        tree.right.left = BinaryTree(aSeq[2])
+    for i in aSeq[1:]:
+        tree.insertBottom(i)
     return tree 
-
 
 def createList(max_seq_value, max_range):
     """Create a list of random values, this list is used as single random node in the tree.
@@ -98,18 +85,16 @@ def createList(max_seq_value, max_range):
         list.append(randint(1,max_range))
     return list
 
-
-def addNodesTree(tree, tree_noise, max_seq_value, max_range):
+def addNodesTree(tree, tree_noise, max_seq_value):
     """the function inserts n random nodes in a tree, this nodes are used as noise inside the tree
     
     Arguments:
         tree {[tree]} -- [The tree where the function has to append random nodes]
         tree_noise {[int]} -- [Number of nodes to append in a tree]
         max_seq_value {[int]} -- [Number of values in a list]
-        max_range {[int]} -- [Max value of random integer]
     """
-    for i in range(1,tree_noise):
-        aList = createList(max_seq_value, max_range)
+    for i in range(0,tree_noise):
+        aList = createList(max_seq_value, 9)
         tree.insertTraversal(aList)
 
 
@@ -154,7 +139,7 @@ def print_dataset(dataset_list):
         for row in dataset_list:
             csvwriter.writerow(row)
 
-def dataset_generator (n_tree, max_seq_value, n_sequences, max_range, tree_noise):
+def dataset_generator (n_tree, max_seq_value, n_sequences, tree_noise):
     """Dataset generator. Once the parameters have been set, a dataset can be built.
         * A seed is generated
         * The seed is then filled with noise (other random numbers)
@@ -166,7 +151,6 @@ def dataset_generator (n_tree, max_seq_value, n_sequences, max_range, tree_noise
         n_tree {[int]} -- [Numbers of trees generated]
         max_seq_value {[int]} -- [Number of values in a list, the list is used as seed lenght]
         n_sequences {[int]} -- [Number of seeds generated]
-        max_range {[int]} -- [Max value in random range]
         tree_noise {[int]} -- [Number of nodes used as noise in a tree]
     """
     r_id = 0
@@ -174,19 +158,19 @@ def dataset_generator (n_tree, max_seq_value, n_sequences, max_range, tree_noise
     treeList = []
     #Creating sequences
     for sequences in range(1, n_sequences):
-        seq = createSequence(max_seq_value, max_range) #creating sequence
+        seq = createSequence(max_seq_value) #creating sequence
         print("\n","Sequence created: ", seq)
         #creating trees
-        for n_trees in range(1, n_tree):
+        for n_trees in range(1, n_tree + 1):
             t_id = t_id + 1
             seqfilled = seqFiller(seq, max_seq_value) #filled sequence
             
             print("\n","Sequence filled: ", seqfilled)
             
             tree = seqTreeBuilder(seqfilled) #from filled sequence to tree
-            addNodesTree(tree,tree_noise, max_seq_value, max_range) #adding noise
+            addNodesTree(tree,tree_noise, max_seq_value) #adding noise
             
-            print("\n","Tree n: ", n_trees)
+            print("\n","Tree: ", n_trees, "\n")
             print(tree, "\n")
             
             r_id = records2(tree, t_id, r_id, treeList)
@@ -199,8 +183,7 @@ def dataset_generator (n_tree, max_seq_value, n_sequences, max_range, tree_noise
 n_tree = 4
 max_seq_value = 4
 n_sequences = 2
-max_range = 9
 tree_noise = 6
 node_noise = 5
 
-dataset_generator(n_tree,max_seq_value,n_sequences,max_range,tree_noise)
+dataset_generator(n_tree,max_seq_value,n_sequences,tree_noise) 
