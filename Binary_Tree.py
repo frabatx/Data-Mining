@@ -37,6 +37,11 @@ class BinaryTree:
     def get_right(self):
         return self.right
 
+    def is_leaf(self):
+        if self.left is None and self.right is None:
+            return True
+        return False
+
     #METHODS
     def __str__(self):
         """Overriding string method
@@ -128,82 +133,12 @@ class BinaryTree:
                 self.left = newNode
                 newNode.parent = self
 
-        
-    
-
-
-'''
-actions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-
-shuffle(actions) #si mischiano i nodi
-print(actions, "\n")
-
-tree = BinaryTree(actions[0]) #si setta il nodo principale
-del actions[0] #si cancella dalla lista
-
-for i in actions: #per ogni nodo
-    print("inserting new value: ", i)
-    tree.insertTraversal(i) #inseriamolo nell'albero
-
-print(tree)
-tree.records()
-'''
-
-
-'''
--------------OUTPUT-------------
-
-['G', 'I', 'C', 'F', 'D', 'A', 'B', 'E', 'H']
-
-inserting new value:  I
-free edge found. Inserting node.
-inserting new value:  C
-node found. Going down...
-free edge found. Inserting node.
-inserting new value:  F
-free edge found. Inserting node.
-inserting new value:  D
-node found. Going down...
-free edge found. Inserting node.
-inserting new value:  A
-node found. Going down...
-free edge found. Inserting node.
-inserting new value:  B
-node found. Going down...
-node found. Going down...
-free edge found. Inserting node.
-inserting new value:  E
-node found. Going down...
-node found. Going down...
-free edge found. Inserting node.
-inserting new value:  H
-node found. Going down...
-node found. Going down...
-node found. Going down...
-free edge found. Inserting node.
-
-tree pretty printed:
-G
-├F
-│├A
-││├
-││└E
-││ ├H
-││ └
-│└D
-└I
- ├C
- │├B
- │└
- └
-
-tree in record form:
-G F
-F A
-A E
-E H
-F D
-G I
-I C
-C B
-'''
+    def insertHead(self, value):
+        newNode = BinaryTree(value)
+        if random.random() > 0.5:
+            self.parent = newNode
+            newNode.right = self
+        else:
+            self.parent = newNode
+            newNode.left = self
+        return newNode

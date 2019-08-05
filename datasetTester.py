@@ -40,7 +40,7 @@ def createSequence(n_list):
 
 def seqFiller(seq, n_max):
     """Filling
-    The function fills a list with random numbers up to 3 elements.
+    The function fills a list with random numbers up to n_max elements.
     
     Arguments:
         seq {[list]} -- [list of lists]
@@ -74,8 +74,8 @@ def createList(max_seq_value, max_range):
     """Create a list of random values, this list is used as single random node in the tree.
     
     Arguments:
-        max_seq_value {[int]} -- [Number of values in a list]
-        max_range {[int]} -- [Max value of a random integer]
+        max_seq_value {[int]} -- [Number of elements in each lists]
+        max_range {[int]} -- [Max value of the elements inside each lists]
     
     Returns:
         [list] -- [list of integer]
@@ -93,10 +93,18 @@ def addNodesTree(tree, tree_noise, max_seq_value):
         tree_noise {[int]} -- [Number of nodes to append in a tree]
         max_seq_value {[int]} -- [Number of values in a list]
     """
-    for i in range(0,tree_noise):
-        aList = createList(max_seq_value, 9)
-        tree.insertTraversal(aList)
 
+    for i in range(0, tree_noise):
+
+        aList = createList(max_seq_value, 9)
+    
+        if random.random() < 0.5 : 
+            tree.insertTraversal(aList)
+        else:
+            parent = tree.insertHead(aList)
+            tree = parent
+    return tree
+    
 
 def records2(tree, t_id, r_id, aList):
     """Given a tree the function builds a dataset as follows: 
@@ -139,7 +147,7 @@ def print_dataset(dataset_list):
         for row in dataset_list:
             csvwriter.writerow(row)
 
-def dataset_generator (n_tree, max_seq_value, n_sequences, tree_noise):
+def dataset_generator (n_tree, n_list, max_seq_value, n_sequences, tree_noise):
     """Dataset generator. Once the parameters have been set, a dataset can be built.
         * A seed is generated
         * The seed is then filled with noise (other random numbers)
@@ -149,6 +157,7 @@ def dataset_generator (n_tree, max_seq_value, n_sequences, tree_noise):
     
     Arguments:
         n_tree {[int]} -- [Numbers of trees generated]
+        n_list {[int]} -- [How long are the sequences]
         max_seq_value {[int]} -- [Number of values in a list, the list is used as seed lenght]
         n_sequences {[int]} -- [Number of seeds generated]
         tree_noise {[int]} -- [Number of nodes used as noise in a tree]
@@ -158,7 +167,7 @@ def dataset_generator (n_tree, max_seq_value, n_sequences, tree_noise):
     treeList = []
     #Creating sequences
     for sequences in range(1, n_sequences):
-        seq = createSequence(max_seq_value) #creating sequence
+        seq = createSequence(n_list) #creating sequence
         print("\n","Sequence created: ", seq)
         #creating trees
         for n_trees in range(1, n_tree + 1):
@@ -168,22 +177,23 @@ def dataset_generator (n_tree, max_seq_value, n_sequences, tree_noise):
             print("\n","Sequence filled: ", seqfilled)
             
             tree = seqTreeBuilder(seqfilled) #from filled sequence to tree
-            addNodesTree(tree,tree_noise, max_seq_value) #adding noise
+            noised_tree = addNodesTree(tree,tree_noise, max_seq_value) #adding noise
             
             print("\n","Tree: ", n_trees, "\n")
-            print(tree, "\n")
+            print(noised_tree, "\n")
             
-            r_id = records2(tree, t_id, r_id, treeList)
+            r_id = records2(noised_tree, t_id, r_id, treeList)
             r_id = r_id - 1
             
     print_dataset(treeList)
  
 
 #generator_sequences(4,4,9)
-n_tree = 4
-max_seq_value = 4
-n_sequences = 2
-tree_noise = 6
-node_noise = 5
+n_tree = 2
+n_list = 4
+max_seq_value = 3
+n_sequences = 3
+tree_noise = 4
 
-dataset_generator(n_tree,max_seq_value,n_sequences,tree_noise) 
+dataset_generator(n_tree, n_list, max_seq_value, n_sequences, tree_noise)  
+
