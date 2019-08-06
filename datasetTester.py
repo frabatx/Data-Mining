@@ -7,6 +7,10 @@ The dataset is structured as follows:
     * Builds a tree from a sequence
     * Adds noise to the tree by adding random nodes
     * Generates the dataset
+
+Authors: 
+    Nicolò Merzi
+    Francesco Battista
 """
 
 import random
@@ -142,7 +146,7 @@ def print_dataset(dataset_list):
     Arguments:
         dataset_list {[list]} -- [List of r_id, t_id, pair of nodes in a parent-child relationship]
     """
-    with open('dataset1k.csv', 'w') as csvfile:
+    with open('dataset.csv', 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for row in dataset_list:
             csvwriter.writerow(row)
@@ -189,11 +193,12 @@ def dataset_generator (n_tree, n_list, max_seq_value, n_sequences, tree_noise):
  
 
 #generator_sequences(4,4,9)
-n_tree = 2
-n_list = 4
-max_seq_value = 3
-n_sequences = 3
-tree_noise = 4
+if __name__ == "__main__":
+    n_tree = 2
+    n_list = 4
+    max_seq_value = 3
+    n_sequences = 3
+    tree_noise = 4
 
-dataset_generator(n_tree, n_list, max_seq_value, n_sequences, tree_noise)  
+    dataset_generator(n_tree, n_list, max_seq_value, n_sequences, tree_noise)  
 

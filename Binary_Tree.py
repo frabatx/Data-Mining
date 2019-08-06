@@ -1,12 +1,19 @@
 # - * - coding: utf-8 - * - 
-"""Binary Tree
+"""
+Binary Tree
 This module creates simple binary trees.
+
+Authors: 
+    Nicolò Merzi
+    Francesco Battista
+
 """
 import random
 from random import shuffle
 
 class BinaryTree:
-    """Class Bynary tree
+    """Class Bynary Tree is used to create a binary tree. 
+    It's built as node serie, the root node rapresents the entire tree.
         Methods:
             * get_data()
             * get_parent()
@@ -16,6 +23,8 @@ class BinaryTree:
             * __insertTraversalLeft(self, value) ** Private method
             * __insertTraversalRight(self, value) ** Private method
             * records(self)
+            * insertBottom
+            * insertHead
     """
     #INITIALIZER
     def __init__(self, data):
@@ -52,9 +61,9 @@ class BinaryTree:
             if node.left != None or node.right != None:
                 for current in [node.left, node.right]:
                     if i == 0:
-                        joint = '├'
+                        joint = '|-'
                     else:
-                        joint = '└'
+                        joint = '|_'
 
                     strings.append('\n')
                     for b in branches:
@@ -134,6 +143,14 @@ class BinaryTree:
                 newNode.parent = self
 
     def insertHead(self, value):
+        """Taking a value and insert it as a root
+        
+        Arguments:
+            value {[int]} -- [Value inside the node]
+        
+        Returns:
+            [Binary Tree] -- [New root node]
+        """
         newNode = BinaryTree(value)
         if random.random() > 0.5:
             self.parent = newNode
