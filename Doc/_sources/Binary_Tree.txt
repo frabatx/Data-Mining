@@ -1,0 +1,7 @@
+Binary_Tree module
+==================
+
+.. automodule:: Binary_Tree
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Binary_Tree module &mdash; Big_data 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Big_data 1.0 documentation" href="index.html" />
+    <link rel="next" title="datasetTester module" href="datasetTester.html" />
+    <link rel="prev" title="scripts" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="datasetTester.html" title="datasetTester module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="scripts"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Big_data 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-Binary_Tree">
+<span id="binary-tree-module"></span><h1>Binary_Tree module<a class="headerlink" href="#module-Binary_Tree" title="Permalink to this headline">¶</a></h1>
+<p>Binary Tree
+This module creates simple binary trees.</p>
+<dl class="class">
+<dt id="Binary_Tree.BinaryTree">
+<em class="property">class </em><code class="descclassname">Binary_Tree.</code><code class="descname">BinaryTree</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class Bynary Tree is used to create a binary tree. 
+It&#8217;s built as node serie, the root node rapresents the entire tree.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Methods:</dt>
+<dd><ul class="first last simple">
+<li>get_data()</li>
+<li>get_parent()</li>
+<li>get_left()</li>
+<li>get_right()</li>
+<li>insertTraversal(self, value)</li>
+<li>__insertTraversalLeft(self, value) ** Private method</li>
+<li>__insertTraversalRight(self, value) ** Private method</li>
+<li>records(self)</li>
+<li>insertBottom</li>
+<li>insertHead</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="method">
+<dt id="Binary_Tree.BinaryTree.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Binary_Tree.BinaryTree.get_left">
+<code class="descname">get_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree.get_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree.get_left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Binary_Tree.BinaryTree.get_parent">
+<code class="descname">get_parent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree.get_parent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree.get_parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Binary_Tree.BinaryTree.get_right">
+<code class="descname">get_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree.get_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree.get_right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Binary_Tree.BinaryTree.insertBottom">
+<code class="descname">insertBottom</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree.insertBottom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree.insertBottom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Taking a value and insert it after the last leaf</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>any type of value</em>) &#8211; Value inside the node</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Binary_Tree.BinaryTree.insertHead">
+<code class="descname">insertHead</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree.insertHead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree.insertHead" title="Permalink to this definition">¶</a></dt>
+<dd><p>Taking a value and insert it as a root</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>Any type of value</em>) &#8211; Value inside the node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">New root node</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Bynary Tree</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Binary_Tree.BinaryTree.insertTraversal">
+<code class="descname">insertTraversal</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree.insertTraversal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree.insertTraversal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Taking a value, less than 0.5 insert the value on left, otherwise on right</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>any type of value</em>) &#8211; Value inside the node</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Binary_Tree.BinaryTree.is_leaf">
+<code class="descname">is_leaf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Binary_Tree.html#BinaryTree.is_leaf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Binary_Tree.BinaryTree.is_leaf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">scripts</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="datasetTester.html"
+                        title="next chapter">datasetTester module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Binary_Tree.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="datasetTester.html" title="datasetTester module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="scripts"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Big_data 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2019, Francesco Battista, Nicolò Merzi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+    </div>
+  </body>
+</html>
