@@ -210,7 +210,7 @@ def dataset_generator (minTree, maxTree, n_list, max_seq_value, n_sequences, tre
             for i in range(0,random_trees):
                 print("\n", "Random Tree")
                 t_id = t_id + 1
-                treeNoise = randomTrees(max_seq_value, n_sequences+tree_noise)
+                treeNoise = randomTrees(max_seq_value, n_list+tree_noise)
                 r_id = records2(treeNoise, t_id, r_id, treeList)
                 r_id = r_id - 1
             
@@ -221,47 +221,47 @@ def dataset_generator (minTree, maxTree, n_list, max_seq_value, n_sequences, tre
 # Dataset Generation
 if __name__ == "__main__":
     minTree = 5         #minimum number of trees to create for a given sequence
-    maxTree = 10         #maximum number of trees to create for a given sequence (has to be greater than minTree)
-    n_list = 3          #sequence lenght
-    max_seq_value = 2   #number of elements inside a list
-    n_sequences = 10     #number of sequences generated
-    tree_noise =10    #number of nodes to add as noise in a tree
-    random_trees = 1000    #number of random trees between trees created with a sequence (noise)
+    maxTree = 20         #maximum number of trees to create for a given sequence (has to be greater than minTree)
+    n_list = 5          #sequence lenght
+    max_seq_value = 4   #number of elements inside a list
+    n_sequences = 40     #number of sequences generated
+    tree_noise = 5    #number of nodes to add as noise in a tree
+    random_trees = 3    #number of random trees between trees created with a sequence (noise)
 
     dataset_generator(minTree, maxTree, n_list, max_seq_value, n_sequences, tree_noise, random_trees)  
 
-""" Dataset 5800 records, base dataset
-    minTree = 5         
-    maxTree = 10         
-    n_list = 3          
-    max_seq_value = 3  
-    n_sequences = 10    
-    tree_noise = 6      
-    random_trees = 5"""    
+"""Dataset1 18848 records, base dataset
+minTree = 5         
+maxTree = 20         
+n_list = 3          
+max_seq_value = 3  
+n_sequences = 50    
+tree_noise = 6      
+random_trees = 3"""    
 
-"""Dataset 388000 records, more tree noise
+"""Dataset2 83072 records, more tree noise
 minTree = 5      
-maxTree = 10        
+maxTree = 20        
 n_list = 3         
 max_seq_value = 3   
-n_sequences = 10   
-tree_noise = 100    
-random_trees = 50"""    
+n_sequences = 50   
+tree_noise = 30    
+random_trees = 3"""    
 
-"""Dataset 520000 records,  more sequences
+"""Dataset3 38070 records,  more sequences
 minTree = 5        
-maxTree = 10       
+maxTree = 20       
 n_list = 3         
 max_seq_value = 3 
-n_sequences = 50   
-tree_noise = 20   
-random_trees = 20 """
+n_sequences = 100   
+tree_noise = 6   
+random_trees = 3"""
 
-"""Dataset 1 milion , more random trees 
+"""Dataset4 19116 records, longer sequences
 minTree = 5         
-maxTree = 10        
-n_list = 3          
-max_seq_value = 2  
-n_sequences = 10    
-tree_noise =10    
-random_trees = 1000 """
+maxTree = 20        
+n_list = 5          
+max_seq_value = 4  
+n_sequences = 40    
+tree_noise = 5    
+random_trees = 3 """
