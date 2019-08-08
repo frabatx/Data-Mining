@@ -61,9 +61,9 @@ class BinaryTree:
             if node.left != None or node.right != None:
                 for current in [node.left, node.right]:
                     if i == 0:
-                        joint = '├'
+                        joint = '|-'
                     else:
-                        joint = '└'
+                        joint = '|_'
 
                     strings.append('\n')
                     for b in branches:

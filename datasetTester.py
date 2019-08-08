@@ -151,13 +151,13 @@ def records2(tree, t_id, r_id, aList):
         r_id = records2(tree.right, t_id, r_id, aList)
     return r_id
 
-def print_dataset(dataset_list):
+def print_dataset(dataset_list, name):
     """Writing entire dataset in a csv
     
     Arguments:
         dataset_list {[list]} -- [List of r_id, t_id, pair of nodes in a parent-child relationship]
     """
-    with open('dataset.csv', 'w') as csvfile:
+    with open(name, 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         for row in dataset_list:
             csvwriter.writerow(row)
@@ -184,9 +184,11 @@ def dataset_generator (minTree, maxTree, n_list, max_seq_value, n_sequences, tre
     r_id = 0
     t_id = 0
     treeList = []
+    seqList = []
     #Creating sequences
     for sequences in range(1, n_sequences + 1):
         seq = createSequence(n_list) #creating sequence
+        seqList.append(seq)
         print("\n","Sequence created: ", seq)
         #creating trees 
         n_tree = random.randint(minTree, maxTree)
@@ -212,17 +214,54 @@ def dataset_generator (minTree, maxTree, n_list, max_seq_value, n_sequences, tre
                 r_id = records2(treeNoise, t_id, r_id, treeList)
                 r_id = r_id - 1
             
-    print_dataset(treeList)
+    print_dataset(treeList, "dataset.csv")
+    print_dataset(seqList, "sequences.csv")
  
 
 # Dataset Generation
 if __name__ == "__main__":
-    minTree = 2 #minimum number of trees to create for a given sequence
-    maxTree = 5 #maximum number of trees to create for a given sequence (has to be greater than minTree)
-    n_list = 3  #sequence lenght
-    max_seq_value = 3   #number of elements inside a list
-    n_sequences = 3 #number of sequences generated
-    tree_noise = 4  #number of nodes to add as noise in a tree
-    random_trees = 2 #number of random trees between trees created with a sequence (noise)
+    minTree = 5         #minimum number of trees to create for a given sequence
+    maxTree = 10         #maximum number of trees to create for a given sequence (has to be greater than minTree)
+    n_list = 3          #sequence lenght
+    max_seq_value = 2   #number of elements inside a list
+    n_sequences = 10     #number of sequences generated
+    tree_noise =10    #number of nodes to add as noise in a tree
+    random_trees = 1000    #number of random trees between trees created with a sequence (noise)
 
     dataset_generator(minTree, maxTree, n_list, max_seq_value, n_sequences, tree_noise, random_trees)  
+
+""" Dataset 5800 records, base dataset
+    minTree = 5         
+    maxTree = 10         
+    n_list = 3          
+    max_seq_value = 3  
+    n_sequences = 10    
+    tree_noise = 6      
+    random_trees = 5"""    
+
+"""Dataset 388000 records, more tree noise
+minTree = 5      
+maxTree = 10        
+n_list = 3         
+max_seq_value = 3   
+n_sequences = 10   
+tree_noise = 100    
+random_trees = 50"""    
+
+"""Dataset 520000 records,  more sequences
+minTree = 5        
+maxTree = 10       
+n_list = 3         
+max_seq_value = 3 
+n_sequences = 50   
+tree_noise = 20   
+random_trees = 20 """
+
+"""Dataset 1 milion , more random trees 
+minTree = 5         
+maxTree = 10        
+n_list = 3          
+max_seq_value = 2  
+n_sequences = 10    
+tree_noise =10    
+random_trees = 1000 """
